@@ -3,7 +3,6 @@ Unused commands are lost in the end of each turn.
 A command is used to move a piece.
 A piece can only be moved once a turn.
 Moving a piece into an enemy piece means a declaration of attack.
-O perdedor de um ataque perde apenas a peça na casa do ataque.
 During an attack, all pieces adjacent to the attack location,
 as well as the pieces in there, have their effectiveness tested
 against the enemy piece in the attack location, the player who
