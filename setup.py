@@ -16,8 +16,8 @@ setup(
     packages = ['cross'],
     long_description = read('README.md'),
 
-    test_suite = 'cross.test.testsuite',
-    tests_require = ['pytest'],
+    test_suite = 'nose.collector',
+    tests_require = ['nose'],
     classifiers = [
         'Programming Language :: Python',
         'Development Status :: 2 - Pre-Alpha',
