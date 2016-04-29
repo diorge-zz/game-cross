@@ -1,0 +1,32 @@
+Each player may use 3 commands in his turn.
+Unused commands are lost in the end of each turn.
+A command is used to move a piece.
+A piece can only be moved once a turn.
+Moving a piece into an enemy piece means a declaration of attack.
+O perdedor de um ataque perde apenas a peça na casa do ataque.
+During an attack, all pieces adjacent to the attack location,
+as well as the pieces in there, have their effectiveness tested
+against the enemy piece in the attack location, the player who
+has the highest number of effective pieces wins.
+In case of draw, the defender wins.
+Only the piece in the attack location or the piece that declared attack is lost in case of defeat.
+Archers are considered to be adjacent to an attack even if 2 locations away.
+Losing the general or every other piece results in defeat.
+Horsemen aren't effective against Spearmen.
+Spearmen aren't effective against Swordsmen.
+Swordsmen aren't effective against Horsemen.
+Archers aren't effective if they are in the attack location or declaring the attack.
+Hosemen move one location in line, then one optional aditional location in diagonal.
+Spearmen, Swordsmen, Archers and the Generals move a single location freely.
+
+The field is 9 locations length x 9 locations wide, totalizing 81 locations
+Each player has 6 Swordsmen (Sw), 6 Spearmen (Sp), 3 Archers (A), 2 Horsemen (H) and 1 General (G) positioned as follow:
+
+Sp Sw Sw H G H Sw Sw Sp
+Sp Sp Sw A A A Sw Sp Sp
+
+
+
+
+Sp Sp Sw A A A Sw Sp Sp
+Sp Sw Sw H G H Sw Sw Sp
