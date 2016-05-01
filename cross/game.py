@@ -36,6 +36,10 @@ class Piece(object):
         self.trooptype = trooptype
         self.color = color
 
+    def __eq__(self, other):
+        """ Equality between pieces """
+        return (self.trooptype, self.color) == (other.trooptype, other.color)
+
 
 class Position(object):
     """ A position on the board """
