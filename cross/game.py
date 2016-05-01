@@ -1,6 +1,9 @@
 from enum import Enum
 
 
+BOARD_SIZE = 9
+
+
 class TroopType(Enum):
     Swordsman = 1
     Spearman = 2
@@ -21,3 +24,11 @@ class Piece(object):
         """ Instantiates a new piece"""
         self.trooptype = trooptype
         self.color = color
+
+
+class Board(object):
+    """ Abstract board representation """
+
+    def __init__(self):
+        """ Creates an empty board """
+        self.pieces = [None] * (BOARD_SIZE * BOARD_SIZE)
