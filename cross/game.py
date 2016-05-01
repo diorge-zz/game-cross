@@ -38,6 +38,8 @@ class Piece(object):
 
     def __eq__(self, other):
         """ Equality between pieces """
+        if other is None:
+            return False
         return (self.trooptype, self.color) == (other.trooptype, other.color)
 
 
@@ -82,6 +84,10 @@ class Board(object):
     def __eq__(self, other):
         """ Compares two boards for equality """
         for i in range(BOARD_SIZE * BOARD_SIZE):
+            if self.pieces[i] == None:
+                if other.pieces[i] == None:
+                    continue
+                return False
             if self.pieces[i] != other.pieces[i]:
                 return False
         return True
@@ -96,6 +102,7 @@ def create_board(pieces):
         for hidx in range(BOARD_SIZE):
             elem = pieces[vidx][hidx]
             b[Position(hidx + 1, chr(vidx + ord('A')))] = elem
+    return b
 
 
 def new_board():
