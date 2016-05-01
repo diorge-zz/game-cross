@@ -25,7 +25,7 @@ class TestGame(TestCase):
         sp, sw, a, h, g = cgame.TroopType.__iter__()
         b, w = cgame.Color.__iter__()
         p = cgame.Piece
-        expected = cgame.Board([
+        expected = cgame.create_board([
             [p(sp, w), p(sw, w), p(sw, w), p(h, w), p(g, w), p(h, w), p(sw, w), p(sw, w), p(sp, w)],
             [p(sp, w), p(sp, w), p(sw, w), p(a, w), p(a, w), p(a, w), p(sw, w), p(sp, w), p(sp, w)],
             [], [], [], [], [],
