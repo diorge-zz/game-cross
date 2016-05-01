@@ -26,9 +26,18 @@ class TestGame(TestCase):
         b, w = cgame.Color.__iter__()
         p = cgame.Piece
         expected = cgame.create_board([
-            [p(sp, w), p(sw, w), p(sw, w), p(h, w), p(g, w), p(h, w), p(sw, w), p(sw, w), p(sp, w)],
-            [p(sp, w), p(sp, w), p(sw, w), p(a, w), p(a, w), p(a, w), p(sw, w), p(sp, w), p(sp, w)],
+            [p(sp, w), p(sw, w), p(sw, w),
+                p(h, w), p(g, w), p(h, w),
+                p(sw, w), p(sw, w), p(sp, w)],
+            [p(sp, w), p(sp, w), p(sw, w),
+                p(a, w), p(a, w), p(a, w),
+                p(sw, w), p(sp, w), p(sp, w)],
             [], [], [], [], [],
-            [p(sp, b), p(sp, b), p(sw, b), p(a, b), p(a, b), p(a, b), p(sw, b), p(sp, b), p(sp, b)],
-            [p(sp, b), p(sw, b), p(sw, b), p(h, b), p(g, b), p(h, b), p(sw, b), p(sw, b), p(sp, b)]])
+            [p(sp, b), p(sp, b), p(sw, b),
+                p(a, b), p(a, b), p(a, b),
+                p(sw, b), p(sp, b), p(sp, b)],
+            [p(sp, b), p(sw, b), p(sw, b),
+                p(h, b), p(g, b), p(h, b),
+                p(sw, b), p(sw, b), p(sp, b)]
+            ])
         assert expected == starting
