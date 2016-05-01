@@ -10,6 +10,15 @@ class TestGame(TestCase):
         assert p.trooptype == cgame.TroopType.Spearman
         assert p.color == cgame.Color.White
 
+    def test_position_index(self):
+        """ Tests conversion of (H, V) coordinate to 0-based index """
+        zero = cgame.Position(1, 'A')
+        idx = cgame.Position(4, 'C')
+        final = cgame.Position(9, 'I')
+        assert 0 == zero
+        assert 22 == idx
+        assert 80 == final
+
     def test_starting_board(self):
         """ Tests the validity of the starting board """
         b = cgame.new_board()
