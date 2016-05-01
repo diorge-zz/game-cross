@@ -106,6 +106,7 @@ def create_board(pieces):
 
 
 def new_board():
+    """ Creates a new board with the starting pieces """
     board = Board()
     for idx, troop in enumerate(STARTING_BOARD[0]):
         board[Position(idx + 1, 'A')] = Piece(troop, Color.White)
