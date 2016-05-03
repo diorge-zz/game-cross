@@ -1,4 +1,4 @@
-import .game as cross
+import cross.game as cross
 import socket
 
 
@@ -16,7 +16,7 @@ class Server(object):
 
     def start(self):
         """ Starts the server to outside connections """
-        self.sock.bind((socket.gethostname(), PORT))
+        self.sock.bind(('', PORT))
         self.sock.listen(2)
 
     def get_clients(self):
