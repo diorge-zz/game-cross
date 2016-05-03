@@ -49,3 +49,19 @@ class ServerClient(object):
     def send(self, message):
         """ Sends data to this client """
         return self.connection.send(message)
+
+
+class Client(object):
+    """ Client for connecting with the server """
+
+    def __init__(self):
+        """ Creates an empty connection """
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    def connect(self, address):
+        """ Connects with a server """
+        self.sock.connect((address, PORT))
+
+    def send_nickname(self, nickname):
+        """ Sends your desired nickname to the server """
+        self.sock.send('nickname;' + nickname)
