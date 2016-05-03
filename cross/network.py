@@ -22,10 +22,30 @@ class Server(object):
     def get_clients(self):
         """ Waits for two clients to connect """
         while len(self.clients) < 2:
-            connection, address = self.sock.accept()
-            self.clients.append(Client(connection, address))
+            connection, _ = self.sock.accept()
+            self.clients.append(ServerClient(connection))
+
+    def broadcast(self, message):
+        """ Broadcasts a message to every connected client """
+        for client in self.clients:
+            client.send(message)
 
 
-class Client(object):
-    """ Cross game TCP Client """
-    pass
+class ServerClient(object):
+    """ Cross game server-side TCP Client """
+
+    def __init__(self, connection):
+        """ Creates a connected client """
+        self.connection = connection
+
+    def close(self):
+        """ Closes the open connection """
+        self.connection.close()
+
+    def receive(self):
+        """ Receive data from this client """
+        return self.connection.recv(BUFFER_SIZE)
+
+    def send(self, message):
+        """ Sends data to this client """
+        return self.connection.send(message)
