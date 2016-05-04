@@ -6,6 +6,10 @@ PORT = 13409
 BUFFER_SIZE = 1024
 
 
+def process_message(msg):
+    pass
+
+
 class Server(object):
     """ Cross game TCP Server """
 
@@ -13,6 +17,8 @@ class Server(object):
         self.board = cross.new_board()
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.clients = []
+        self.active = None
+        self.inactive = None
 
     def start(self):
         """ Starts the server to outside connections """
@@ -24,11 +30,21 @@ class Server(object):
         while len(self.clients) < 2:
             connection, _ = self.sock.accept()
             self.clients.append(ServerClient(connection))
+        self.active
 
     def broadcast(self, message):
         """ Broadcasts a message to every connected client """
         for client in self.clients:
             client.send(message)
+
+    def swap_players(self):
+        """ Swaps the active and inactive players """
+        self.active, self.inactive = (self.inactive, self.active)
+
+    def read_play(self):
+        """ Waits for the active player to make the next move """
+        data = self.active.receive()
+        process_message(data)
 
 
 class ServerClient(object):
