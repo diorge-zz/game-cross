@@ -41,3 +41,11 @@ class TestGame(TestCase):
                 p(sw, b), p(sw, b), p(sp, b)]
             ])
         assert expected == starting
+
+    def test_position_parsing_correct(self):
+        """ Tests position parsing with correct input """
+        a, b, c = '1A', '5D', '9I'
+        ra, rb, rc = map(cgame.Position.parse, [a, b, c])
+        assert ra.index == 0
+        assert rb.index == 31
+        assert rc.index == 80
