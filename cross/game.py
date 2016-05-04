@@ -61,6 +61,17 @@ class Position(object):
         """ Returns the [0, 80] index of the position """
         return self._idx
 
+    @staticmethod
+    def parse(s):
+        """ Parses a position string to a position object """
+        if len(s) != 2:
+            raise ValueError('Invalid position: ' + s)
+        n = int(s[0])
+        c = s[1]
+        if 1 <= n <= 9 and ord('A') <= ord(c) <= ord('I'):
+            return Position(n, c)
+        raise ValueError('Invalid position ' + s)
+
 
 class Board(object):
     """ Abstract board representation """
