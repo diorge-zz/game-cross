@@ -49,3 +49,13 @@ class TestGame(TestCase):
         assert ra.index == 0
         assert rb.index == 31
         assert rc.index == 80
+
+    def test_position_parsing_incorrect(self):
+        """ Tests position parsing for incorrect input """
+        a, b, c = '', '0A', '4c'
+        with self.assertRaises(ValueError) as ctx:
+            cgame.Position.parse(a)
+        with self.assertRaises(ValueError) as ctx:
+            cgame.Position.parse(b)
+        with self.assertRaises(ValueError) as ctx:
+            cgame.Position.parse(c)
