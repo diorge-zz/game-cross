@@ -5,9 +5,22 @@ import socket
 PORT = 13409
 BUFFER_SIZE = 1024
 
+COMMANDS = {
+            'move': move_piece
+    }
 
-def process_message(msg):
+
+def move_piece(srv, orig, dest):
+    """ Moves a piece on the board from orig to dest """
     pass
+
+
+def process_message(msg, srv):
+    """ Process a receive message from the active player """
+    spl = msg.split(';')
+    cmd = spl[0]
+    args = spl[1:]
+    COMMANDS[cmd](srv, *args)
 
 
 class Server(object):
@@ -44,7 +57,7 @@ class Server(object):
     def read_play(self):
         """ Waits for the active player to make the next move """
         data = self.active.receive()
-        process_message(data)
+        process_message(data, self)
 
 
 class ServerClient(object):
