@@ -6,13 +6,15 @@ PORT = 13409
 BUFFER_SIZE = 1024
 
 COMMANDS = {
-            'move': move_piece
+            'move': move_piece,
     }
 
 
 def move_piece(srv, orig, dest):
     """ Moves a piece on the board from orig to dest """
-    pass
+    origPos = cross.Position.parse(orig)
+    destPos = cross.Position.parse(dest)
+    srv.board[destPos] = srv.board[origPos]
 
 
 def process_message(msg, srv):
