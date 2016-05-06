@@ -59,3 +59,25 @@ class TestGame(TestCase):
             cgame.Position.parse(b)
         with self.assertRaises(ValueError) as ctx:
             cgame.Position.parse(c)
+
+    def test_piece_repr(self):
+        """ Tests the representation of the pieces """
+        p1 = cgame.Piece(cgame.TroopType.Swordsman, cgame.Color.White)
+        p2 = None
+        p3 = cgame.Piece(cgame.TroopType.Horseman, cgame.Color.Black)
+        assert 'WW' == cgame.piece_repr(p1)
+        assert '00' == cgame.piece_repr(p2)
+        assert 'HB' == cgame.piece_repr(p3)
+
+    def test_initial_board_repr(self):
+        """ Tests the board representation for the initial board """
+        b = cgame.new_board()
+        s = repr(b)
+        empty_row = '-'.join(['00'] * 9)
+        empty_rows = '/'.join([empty_row] * 5)
+        white_rows = ('PW-WW-WW-HW-GW-HW-WW-WW-PW' + '/' +
+                      'PW-PW-WW-AW-AW-AW-WW-PW-PW')
+        black_rows = ('PB-PB-WB-AB-AB-AB-WB-PB-PB' + '/' +
+                      'PB-WB-WB-HB-GB-HB-WB-WB-PB')
+        expected = '/'.join([white_rows, empty_rows, black_rows])
+        assert expected == s

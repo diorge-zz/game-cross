@@ -6,13 +6,21 @@ PORT = 13409
 BUFFER_SIZE = 1024
 
 COMMANDS = {
-            'move': move_piece
+            'move': move_piece,
+            'get': get_board,
     }
 
 
 def move_piece(srv, orig, dest):
     """ Moves a piece on the board from orig to dest """
-    pass
+    origPos = cross.Position.parse(orig)
+    destPos = cross.Position.parse(dest)
+    srv.board[destPos] = srv.board[origPos]
+
+
+def get_board(srv):
+    """ Sends the current board state to the both players """
+    srv.broadcast('board;' + repr(srv.board))
 
 
 def process_message(msg, srv):
