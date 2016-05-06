@@ -103,6 +103,10 @@ class Board(object):
                 return False
         return True
 
+    def __repr__(self):
+        # TODO
+        return ''
+
 
 def create_board(pieces):
     """ Creates a board from a matrix of pieces """
