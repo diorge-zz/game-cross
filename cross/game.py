@@ -28,6 +28,11 @@ STARTING_BOARD = [[
         ]]
 
 
+def piece_repr(piece):
+    """ Returns a 2 character string representing the piece, deals with None """
+    return repr(piece) if piece is not None else '00'
+
+
 class Piece(object):
     """ Piece on the board """
 
@@ -41,6 +46,16 @@ class Piece(object):
         if other is None:
             return False
         return (self.trooptype, self.color) == (other.trooptype, other.color)
+
+    def __repr__(self):
+        """ Returns a 2 character string representing the piece """
+        troopnames = {TroopType.Spearman: 'P',
+                      TroopType.Swordsman: 'W',
+                      TroopType.Archer: 'A',
+                      TroopType.Horseman: 'H',
+                      TroopType.General: 'G'}
+        colornames = {Color.White: 'W', Color.Black: 'B'}
+        return troopnames[self.trooptype] + colornames[self.color]
 
 
 class Position(object):

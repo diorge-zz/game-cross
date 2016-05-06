@@ -59,3 +59,11 @@ class TestGame(TestCase):
             cgame.Position.parse(b)
         with self.assertRaises(ValueError) as ctx:
             cgame.Position.parse(c)
+
+    def test_piece_repr(self):
+        p1 = cgame.Piece(cgame.TroopType.Swordsman, cgame.Color.White)
+        p2 = None
+        p3 = cgame.Piece(cgame.TroopType.Horseman, cgame.Color.Black)
+        assert 'WW' == cgame.piece_repr(p1)
+        assert '00' == cgame.piece_repr(p2)
+        assert 'HB' == cgame.piece_repr(p3)
