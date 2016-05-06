@@ -29,7 +29,7 @@ STARTING_BOARD = [[
 
 
 def piece_repr(piece):
-    """ Returns a 2 character string representing the piece, deals with None """
+    """ Returns a 2 character representation of the piece, deals with None """
     return repr(piece) if piece is not None else '00'
 
 
@@ -118,9 +118,17 @@ class Board(object):
                 return False
         return True
 
+    def matrix(self):
+        """ Returns the pieces as a matrix (list of lists) """
+        r = range(BOARD_SIZE)
+        return [[self.pieces[y * BOARD_SIZE + x] for x in r] for y in r]
+
     def __repr__(self):
-        # TODO
-        return ''
+        """ Board text representation """
+        return '/'.join(
+                    '-'.join(
+                        piece_repr(piece) for piece in line)
+                    for line in self.matrix())
 
 
 def create_board(pieces):
